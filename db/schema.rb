@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_021953) do
+ActiveRecord::Schema.define(version: 2021_08_21_035636) do
+
+  create_table "drafts", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "period"
+    t.string "content"
+    t.string "target"
+    t.string "counter"
+    t.string "link"
+    t.boolean "emergency", default: false, null: false
+    t.boolean "primary_sector", default: false, null: false
+    t.boolean "other_sector", default: false, null: false
+    t.boolean "emigration", default: false, null: false
+    t.boolean "senior", default: false, null: false
+    t.boolean "parenting", default: false, null: false
+    t.boolean "other", default: true, null: false
+    t.string "select"
+    t.string "comment"
+    t.string "draft_approver_id"
+    t.string "draft_status", default: "申請中です"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_drafts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
