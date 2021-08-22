@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_030351) do
+ActiveRecord::Schema.define(version: 2021_08_22_053633) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string "city_name"
+    t.string "city_code"
+    t.integer "pref_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pref_id"], name: "index_cities_on_pref_id"
+  end
+
+  create_table "city_topics", force: :cascade do |t|
+    t.string "title"
+    t.string "period"
+    t.string "content"
+    t.string "target"
+    t.string "counter"
+    t.string "link"
+    t.boolean "emergency", default: false, null: false
+    t.boolean "primary_sector", default: false, null: false
+    t.boolean "other_sector", default: false, null: false
+    t.boolean "emigration", default: false, null: false
+    t.boolean "senior", default: false, null: false
+    t.boolean "parenting", default: false, null: false
+    t.boolean "other", default: true, null: false
+    t.integer "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_city_topics_on_city_id"
+  end
 
   create_table "drafts", force: :cascade do |t|
     t.string "name"
