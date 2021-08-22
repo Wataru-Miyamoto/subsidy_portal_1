@@ -4,6 +4,7 @@
 /* 共通 */
 
 body {
+  // background-color: white;
   padding-top: 60px;
 }
 
@@ -62,7 +63,7 @@ p {
 /* ヘッダー */
 
 #header {
-  background-color: teal;
+  background-color: #53E6A3;
 }
 
 #logo {
@@ -76,7 +77,7 @@ p {
   font-weight: bold;
   font-style: italic;
   &:hover {
-    color: silver;
+    color: rgb(226, 226, 226);
     text-decoration: none;
   }
 }
