@@ -1,2 +1,19 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% provide(:title, @user.name) %>
+<div>
+  <table class="table table-bordered table-condensed user-table">
+    <tr>
+      <td>時間管理表</td>
+      <td>指定勤務時間</td>
+      <td colspan="2"></td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>所属</td>
+      <td>ユーザーネーム： <%= @user.name %></td>
+      <td>コード</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
