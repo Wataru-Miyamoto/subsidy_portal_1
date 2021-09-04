@@ -9,7 +9,7 @@
         <%= file_field_tag :file %>
       </div>
       <div>
-        <%= submit_tag "都道府県をインポート" %>
+        <%= submit_tag "市区町村をインポート" %>
       </div>
       <% end %>
   <% end %>
@@ -17,7 +17,7 @@
 
 <div class="container">
   <% @cities.each do |city| %>
-    <%= link_to pref_city_city_topics_path(city), method: :get do %>
+    <%= link_to pref_city_city_topics_path(@pref, city), method: :get do %>
       <div class="row">
         <div class="col-md-3 col-md-offset-1">
           <%= city.city_name %>

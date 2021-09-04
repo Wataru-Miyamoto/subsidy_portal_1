@@ -16,7 +16,7 @@
 
 <div class="container">
   <% @prefs.each do |pref| %>
-    <%= link_to pref_path(pref), method: :get do %>
+    <%= link_to pref_cities_path(pref), method: :get do %>
       <div class="row">
         <div class="col-md-3 col-md-offset-1">
           <%= pref.pref_name %>
