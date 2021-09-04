@@ -1,46 +1,57 @@
 <div class="col-md-9 col-md-offset-3 col-xs-12">
-                          <%= d.label "実施官公庁名", class: "label-draft" %>
-                          <%= d.text_field :name, placeholder: "（例）◯◯省、◯◯庁、××県、××県△△市 など", class: 'form-control' %>
+<%= form_with url: draft_path, method: :patch, local: true do |d| %>
+  <h3>編集する</h3><br>
+  <%= d.label "実施官公庁名", class: "label-draft" %>
+  <%= d.text_field :name, placeholder: "（例）◯◯省、◯◯庁、××県、××県△△市 など", class: 'form-control' %>
 
-                          <%= d.label "施作名", class: "label-draft" %>
-                          <%= d.text_field :title, placeholder: "（例）◯◯補助金事業、令和×年度××助成金事業、△△減免 など", class: 'form-control' %>
+  <%= d.label "施作名", class: "label-draft" %>
+  <%= d.text_field :title, placeholder: "（例）◯◯補助金事業、令和×年度××助成金事業、△△減免 など", class: 'form-control' %>
 
-                          <%= d.label "実施期間", class: "label-draft" %>
-                          <%= d.text_field :period, placeholder: "（例）令和◯年◯月◯日〜令和×年×月×日、予定数に達するまで随時受付 など", class: 'form-control' %>
+  <%= d.label "実施期間", class: "label-draft" %>
+  <%= d.text_field :period, placeholder: "（例）令和◯年◯月◯日〜令和×年×月×日、予定数に達するまで随時受付 など", class: 'form-control' %>
 
-                          <%= d.label "実施内容", class: "label-draft" %>
-                          <%= d.text_area :content, placeholder: "（例）◯◯を目的に、××の方を対象に最大△△万円を助成する。（申し込み時に審査が必要） など", class: 'form-control' %>
+  <%= d.label "実施内容", class: "label-draft" %>
+  <%= d.text_area :content, placeholder: "（例）◯◯を目的に、××の方を対象に最大△△万円を助成する。（申し込み時に審査が必要） など", class: 'form-control' %>
 
-                          <%= d.label "対象者", class: "label-draft" %>
-                          <%= d.text_field :target, placeholder: "（例）◯◯歳以上××歳未満の方、申請時に△△内に住民票がある方 など", class: 'form-control' %>
+  <%= d.label "対象者", class: "label-draft" %>
+  <%= d.text_field :target, placeholder: "（例）◯◯歳以上××歳未満の方、申請時に△△内に住民票がある方 など", class: 'form-control' %>
 
-                          <%= d.label "受付窓口", class: "label-draft" %>
-                          <%= d.text_field :counter, placeholder: "（例）各市町村窓口、◯◯県◯◯地域センター、××市△△課 など", class: 'form-control' %>
+  <%= d.label "受付窓口", class: "label-draft" %>
+  <%= d.text_field :counter, placeholder: "（例）各市町村窓口、◯◯県◯◯地域センター、××市△△課 など", class: 'form-control' %>
 
-                          <%= d.label "リンク", class: "label-draft" %>
-                          <%= d.text_field :link, placeholder: "（例）https://www.hoge.lg.jp/fugafuga.html （該当ページリンクを貼り付けてください）", class: 'form-control' %>
+  <%= d.label "リンク", class: "label-draft" %>
+  <%= d.text_field :link, placeholder: "（例）https://www.hoge.lg.jp/fugafuga.html （該当ページリンクを貼り付けてください）", class: 'form-control' %>
 
-                        </div>
+</div>
 
-                        <div class="col-md-9 col-md-offset-3 col-xs-12">
-                          <%= d.label "カテゴリー", class: "label-draft" %><br>
-                          <%= d.check_box :emergency, {}, "true", "false" %>
-                          <span>緊急時（自然災害・感染症対策等）</span><br>
-                          <%= d.check_box :primary_sector, {}, "true", "false" %>
-                          <span>農林漁業者向け</span><br>
-                          <%= d.check_box :other_sector, {}, "true", "false" %>
-                          <span>その他事業者向け</span><br>
-                          <%= d.check_box :emigration, {}, "true", "false" %>
-                          <span>移住者向け</span><br>
-                          <%= d.check_box :senior, {}, "true", "false" %>
-                          <span>高齢者向け</span><br>
-                          <%= d.check_box :parenting, {}, "true", "false" %>
-                          <span>子育て世帯向け</span><br>
-                          <%= d.check_box :other, {checked: true}, "true", "false" %>
-                          <span>それ以外</span>
-                          <br>
-                          <%= d.label "どの官公庁が関わっていますか？", class: "label-draft" %><br>
-                          <%= d.radio_button :select, checked: true, "国" %>政府が関わっている<br> <%= d.radio_button :select, "県" %>都道府県独自<br> <%= d.radio_button :select, "市" %>市町村独自
+<div class="col-md-9 col-md-offset-3 col-xs-12">
+  <%= d.label "カテゴリー", class: "label-draft" %><br>
+  <%= d.check_box :emergency, {}, "true", "false" %>
+  <span>緊急時（自然災害・感染症対策等）</span><br>
+  <%= d.check_box :primary_sector, {}, "true", "false" %>
+  <span>農林漁業者向け</span><br>
+  <%= d.check_box :other_sector, {}, "true", "false" %>
+  <span>その他事業者向け</span><br>
+  <%= d.check_box :emigration, {}, "true", "false" %>
+  <span>移住者向け</span><br>
+  <%= d.check_box :senior, {}, "true", "false" %>
+  <span>高齢者向け</span><br>
+  <%= d.check_box :parenting, {}, "true", "false" %>
+  <span>子育て世帯向け</span><br>
+  <%= d.check_box :other, {checked: true}, "true", "false" %>
+  <span>それ以外</span>
+  <br>
+  <%= d.label "どの官公庁が関わっていますか？", class: "label-draft" %><br>
+  <%= d.radio_button :select, "国", checked: true %>政府が関わっている<br> <%= d.radio_button :select, "県" %>都道府県独自<br> <%= d.radio_button :select, "市" %>市町村独自<br>
 
-                          <%= d.submit "更新", class: "btn btn-primary btn-block btn-login" %>
-                        </div>
+  <% if current_user.admin? %>
+    <%= d.label "コメント", class: "label-draft" %>
+    <%= d.text_field :comment, placeholder: "ご投稿ありがとうございます！", class: 'form-control' %>
+
+    <%= d.label "承認状況" %>
+    <%= d.text_field :draft_status, placeholder: "申請中です、承認・更新を行いました（一部校正）、申し訳ありませんが再提出をお願いいたします", class: 'form-control' %>
+  <% end %>
+
+  <%= d.submit "更新", class: "btn btn-primary btn-block btn-login" %>
+<% end %>
+</div>

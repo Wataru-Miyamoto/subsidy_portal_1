@@ -48,7 +48,7 @@
     <span>それ以外</span>
     <br>
     <%= d.label "どの官公庁が関わっていますか？", class: "label-draft" %><br>
-    <%= d.radio_button :select, checked: true, "国" %>政府が関わっている<br> <%= d.radio_button :select, "県" %>都道府県独自<br> <%= d.radio_button :select, "市" %>市町村独自
+    <%= d.radio_button :select, "国", checked: true %>政府が関わっている<br> <%= d.radio_button :select, "県" %>都道府県独自<br> <%= d.radio_button :select, "市" %>市町村独自
 
     <%= d.submit "投稿", class: "btn btn-primary btn-block btn-login" %>
 
