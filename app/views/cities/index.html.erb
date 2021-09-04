@@ -1,10 +1,11 @@
-<h1>都道府県</h1>
-<p class="center">クリックするとその都道府県内の市区町村が表示されます</p>
+<h1><%= @pref.pref_name %></h1>
+
+<p class="center">クリックすると市区町村が表示されます</p>
 <% if logged_in? %>
   <% if current_user.admin? %>
     <div class="col-md-10 col-md-offset-1">
       <div class="csv_holder">
-        <%= form_tag import_prefs_path, multipart: true do %>
+        <%= form_tag import_pref_cities_path, multipart: true do %>
         <%= file_field_tag :file %>
       </div>
       <div>
@@ -15,11 +16,11 @@
 <% end %>
 
 <div class="container">
-  <% @prefs.each do |pref| %>
-    <%= link_to pref_path(pref), method: :get do %>
+  <% @cities.each do |city| %>
+    <%= link_to pref_city_city_topics_path(city), method: :get do %>
       <div class="row">
         <div class="col-md-3 col-md-offset-1">
-          <%= pref.pref_name %>
+          <%= city.city_name %>
         </div>
       </div>
     <% end %>

@@ -26,8 +26,8 @@
                 メニュー <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "新規投稿", new_draft_path(current_user), method: :get %></li>
-                <li><%= link_to "投稿ログ一覧", drafts_path(current_user), method: :get %></li>
+                <li><%= link_to "新規投稿", new_user_draft_path(current_user), method: :get %></li>
+                <li><%= link_to "投稿ログ一覧", user_drafts_path(current_user), method: :get %></li>
                 <li><%= link_to "ユーザー設定", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
               <li>

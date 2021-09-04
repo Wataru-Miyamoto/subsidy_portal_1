@@ -10,7 +10,7 @@
         <tr>
           <td><%= draft.name %>: <%= draft.title %>
             <% if current_user?(@user) %>
-              <%= link_to "削除", draft_path, method: :delete, class: "btn btn-sm btn-danger",
+              <%= link_to "削除", user_draft_path(current_user, draft), method: :delete, class: "btn btn-sm btn-danger",
                   data: { confirm:"削除してよろしいですか？" } %><br>
               <div class="panel-group">
                 <div class="panel panel-default">
@@ -24,8 +24,24 @@
                     <ul class="list-group">
                       <table class="table table-bordered table-condensed table-hover">
                         <tr>
-                          <td>受付窓口</td>
+                          <td>実施期間</td>
                           <td><%= draft.period %></td>
+                        </tr>
+                        <tr>
+                          <td>実施内容</td>
+                          <td><%= draft.content %></td>
+                        </tr>
+                        <tr>
+                          <td>対象者</td>
+                          <td><%= draft.target %></td>
+                        </tr>
+                        <tr>
+                          <td>受付窓口</td>
+                          <td><%= draft.counter %></td>
+                        </tr>
+                        <tr>
+                          <td>リンク</td>
+                          <td><%= draft.link %></td>
                         </tr>
                       </table>
                     </ul>

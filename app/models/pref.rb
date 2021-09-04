@@ -6,13 +6,13 @@ class Pref < ApplicationRecord
 
   #importメソッド
   def self.import(file)
-    CSV.foreach(file.path, headers: true, encoding: "Windows-31J:UTF-8") do |row|
+    CSV.foreach(file.path, headers: true) do |row|
       # IDが見つかれば、レコードを呼び出し、見つからなければ、新しく作成
       pref = find_by(id: row["id"]) || new
       # CSVからデータを取得し、設定する
       pref.attributes = row.to_hash.slice(*updatable_attributes)
       # 保存する
-      pref.save!(validate: false)
+      pref.save
     end
   end
   

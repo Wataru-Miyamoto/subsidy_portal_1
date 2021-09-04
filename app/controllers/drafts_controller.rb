@@ -1,17 +1,17 @@
 class DraftsController < ApplicationController
 
   def index
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @drafts = current_user.admin? ? Draft.all : Draft.where(user_id: @user.id)
   end
 
   def new
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @draft = Draft.new
   end
 
   def create
-    @user = User.find(params[:id])
+    @user = User.find(params[:User_id])
     @draft = Draft.new(draft_params)
     if @draft.save
       flash[:success] = '投稿を送信しました。'
@@ -28,8 +28,13 @@ class DraftsController < ApplicationController
   def edit
   end
 
-  def destroy
+  def update
 
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @draft = Draft.find(params[:id])
   end
 
   private
