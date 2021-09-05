@@ -1,6 +1,6 @@
 class PrefsController < ApplicationController
   def index
-    @prefs = Pref.all
+    @prefs = Pref.all.paginate(page: params[:page])
   end
 
   def show

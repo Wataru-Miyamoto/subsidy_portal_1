@@ -14,14 +14,22 @@
   <% end %>
 <% end %>
 
-<div class="container">
-  <% @prefs.each do |pref| %>
-    <%= link_to pref_cities_path(pref), method: :get do %>
-      <div class="row">
-        <div class="col-md-3 col-md-offset-1">
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-condensed table-hover" id="table-users">
+    <thead>
+      <tr>
+        <th><%= will_paginate %></th>
+      </tr>
+    </thead>
+    <% @prefs.each do |pref| %>
+      <tr>
+        <td>
+          <%= link_to pref_cities_path(pref), method: :get do %>
           <%= pref.pref_name %>
-        </div>
-      </div>
+        </td>
+      </tr>
+          <% end %>
     <% end %>
-  <% end %>
+  </table>
+  <%= will_paginate %>
 </div>

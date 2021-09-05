@@ -15,14 +15,22 @@
   <% end %>
 <% end %>
 
-<div class="container">
-  <% @cities.each do |city| %>
-    <%= link_to pref_city_city_topics_path(@pref, city), method: :get do %>
-      <div class="row">
-        <div class="col-md-3 col-md-offset-1">
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-condensed table-hover" id="table-users">
+    <thead>
+      <tr>
+        <th><%= will_paginate %></th>
+      </tr>
+    </thead>
+    <% @cities.each do |city| %>
+      <tr>
+        <td>
+          <%= link_to pref_city_city_topics_path(@pref, city), method: :get do %>
           <%= city.city_name %>
-        </div>
-      </div>
+        </td>
+      </tr>
+          <% end %>
     <% end %>
-  <% end %>
+  </table>
+  <%= will_paginate %>
 </div>

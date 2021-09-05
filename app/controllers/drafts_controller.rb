@@ -11,7 +11,7 @@ class DraftsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:User_id])
+    @user = User.find(params[:user_id])
     @draft = Draft.new(draft_params)
     if @draft.save
       flash[:success] = '投稿を送信しました。'

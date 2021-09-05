@@ -6,7 +6,7 @@
   <%= form_with(model: @draft, url: user_drafts_path(@user, @draft), method: :post, local: true) do |d| %>
 
 
-  <div class="col-md-9 col-md-offset-3 col-xs-12">
+  <div class="col-md-10 col-md-offset-1 col-xs-12">
     <%= d.label "実施官公庁名", class: "label-draft" %>
     <%= d.text_field :name, placeholder: "（例）◯◯省、◯◯庁、××県、××県△△市 など", class: 'form-control' %>
 
@@ -30,7 +30,7 @@
 
   </div>
 
-  <div class="col-md-9 col-md-offset-3 col-xs-12">
+  <div class="col-md-10 col-md-offset-1 col-xs-12">
     <%= d.label "カテゴリー", class: "label-draft" %><br>
     <%= d.check_box :emergency, {}, "true", "false" %>
     <span>緊急時（自然災害・感染症対策等）</span><br>
