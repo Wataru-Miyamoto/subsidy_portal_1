@@ -1,0 +1,165 @@
+<h1>マスタ投稿画面</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 col-xs-12 gov_background">
+    <h3 class="center">国</h3>
+    <%= form_with(model: @gov_topic, url: gov_topics_path, method: :post, local: true) do |f| %>
+
+      <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <%= f.label "実施官公庁名" %>
+        <%= f.text_field :gov_name, class: 'form-control' %>
+
+        <%= f.label "施作名" %>
+        <%= f.text_field :title, class: 'form-control' %>
+
+        <%= f.label "実施期間" %>
+        <%= f.text_field :period, class: 'form-control' %>
+
+        <%= f.label "実施内容" %>
+        <%= f.text_area :content, class: 'form-control' %>
+
+        <%= f.label "対象者" %>
+        <%= f.text_field :target, class: 'form-control' %>
+
+        <%= f.label "受付窓口" %>
+        <%= f.text_field :counter, class: 'form-control' %>
+
+        <%= f.label "リンク" %>
+        <%= f.text_field :link, class: 'form-control' %>
+
+      </div>
+
+      <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <%= f.label "カテゴリー" %><br>
+        <%= f.check_box :emergency, {}, "true", "false" %>
+        <span>緊急時（自然災害・感染症対策等）</span><br>
+        <%= f.check_box :primary_sector, {}, "true", "false" %>
+        <span>農林漁業者向け</span><br>
+        <%= f.check_box :other_sector, {}, "true", "false" %>
+        <span>その他事業者向け</span><br>
+        <%= f.check_box :emigration, {}, "true", "false" %>
+        <span>移住者向け</span><br>
+        <%= f.check_box :senior, {}, "true", "false" %>
+        <span>高齢者向け</span><br>
+        <%= f.check_box :parenting, {}, "true", "false" %>
+        <span>子育て世帯向け</span><br>
+        <%= f.check_box :other, {checked: true}, "true", "false" %>
+        <span>それ以外</span>
+        <br>
+        
+      <%= f.submit "マスタ投稿", class: "btn btn-primary btn-block btn-login" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 col-xs-12 pref_background">
+    <h3 class="center">県</h3>
+    <%= form_with(model: @prefs, url: admin_pref_topic_post_user_path(@user), local: true) do |pref| %>
+
+      <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <%= pref.label "実施官公庁名" %>
+        <%= pref.collection_select :pref_code, Pref.all, :id, :pref_name, {prompt: "選択して下さい"} %><br>
+
+        <%= pref.fields_for "pref_topics[]", @pref_topic do |f| %>
+
+        <%= f.label "施作名" %>
+        <%= f.text_field :title, class: 'form-control' %>
+
+        <%= f.label "実施期間" %>
+        <%= f.text_field :period, class: 'form-control' %>
+
+        <%= f.label "実施内容" %>
+        <%= f.text_area :content, class: 'form-control' %>
+
+        <%= f.label "対象者" %>
+        <%= f.text_field :target, class: 'form-control' %>
+
+        <%= f.label "受付窓口" %>
+        <%= f.text_field :counter, class: 'form-control' %>
+
+        <%= f.label "リンク" %>
+        <%= f.text_field :link, class: 'form-control' %>
+
+      </div>
+
+      <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <%= f.label "カテゴリー" %><br>
+        <%= f.check_box :emergency, {}, "true", "false" %>
+        <span>緊急時（自然災害・感染症対策等）</span><br>
+        <%= f.check_box :primary_sector, {}, "true", "false" %>
+        <span>農林漁業者向け</span><br>
+        <%= f.check_box :other_sector, {}, "true", "false" %>
+        <span>その他事業者向け</span><br>
+        <%= f.check_box :emigration, {}, "true", "false" %>
+        <span>移住者向け</span><br>
+        <%= f.check_box :senior, {}, "true", "false" %>
+        <span>高齢者向け</span><br>
+        <%= f.check_box :parenting, {}, "true", "false" %>
+        <span>子育て世帯向け</span><br>
+        <%= f.check_box :other, {checked: true}, "true", "false" %>
+        <span>それ以外</span>
+        <br>
+        
+        <% end %>
+      <%= pref.submit "マスタ投稿", class: "btn btn-primary btn-block btn-login" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 col-xs-12 city_background">
+    <h3 class="center"><%= link_to "市",admin_index_pref_path %></h3>
+    <%= form_with(model: @cities, url: admin_city_topic_post_user_path(@user), local: true) do |city| %>
+
+      <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <%= city.label "実施官公庁名" %>
+        <%= city.collection_select :pref, Pref.all, :id, :pref_name, {prompt: "選択して下さい"} %>
+        <%= render partial: 'cities', locals: {pref_id: Pref.first.id} %>
+        <br>
+
+        <%= city.fields_for "city_topics[]", @city_topic do |f| %>
+
+        <%= f.label "施作名" %>
+        <%= f.text_field :title, class: 'form-control' %>
+
+        <%= f.label "実施期間" %>
+        <%= f.text_field :period, class: 'form-control' %>
+
+        <%= f.label "実施内容" %>
+        <%= f.text_area :content, class: 'form-control' %>
+
+        <%= f.label "対象者" %>
+        <%= f.text_field :target, class: 'form-control' %>
+
+        <%= f.label "受付窓口" %>
+        <%= f.text_field :counter, class: 'form-control' %>
+
+        <%= f.label "リンク" %>
+        <%= f.text_field :link, class: 'form-control' %>
+
+      </div>
+
+      <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <%= f.label "カテゴリー" %><br>
+        <%= f.check_box :emergency, {}, "true", "false" %>
+        <span>緊急時（自然災害・感染症対策等）</span><br>
+        <%= f.check_box :primary_sector, {}, "true", "false" %>
+        <span>農林漁業者向け</span><br>
+        <%= f.check_box :other_sector, {}, "true", "false" %>
+        <span>その他事業者向け</span><br>
+        <%= f.check_box :emigration, {}, "true", "false" %>
+        <span>移住者向け</span><br>
+        <%= f.check_box :senior, {}, "true", "false" %>
+        <span>高齢者向け</span><br>
+        <%= f.check_box :parenting, {}, "true", "false" %>
+        <span>子育て世帯向け</span><br>
+        <%= f.check_box :other, {checked: true}, "true", "false" %>
+        <span>それ以外</span>
+        <br>
+        
+        <% end %>
+      <%= city.submit "マスタ投稿", class: "btn btn-primary btn-block btn-login" %>
+    <% end %>
+  </div>
+</div>

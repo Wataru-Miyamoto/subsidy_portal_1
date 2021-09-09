@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 col-xs-12 city_background">
+    <h1>都道府県</h1>
+    <p class="center">クリックするとその都道府県内の市区町村が表示されます</p>
+    <div class="col-md-10 col-md-offset-1">
+      <table class="table table-condensed table-hover" id="table-users">
+        <thead>
+          <tr>
+            <th><%= will_paginate %></th>
+          </tr>
+        </thead>
+        <% @prefs.each do |pref| %>
+          <tr>
+            <td>
+              <%= link_to admin_index_pref_city_path(pref), method: :get do %>
+              <%= pref.pref_name %>
+            </td>
+          </tr>
+              <% end %>
+        <% end %>
+      </table>
+      <%= will_paginate %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="col-md-9 col-md-offset-3 col-xs-12">
+<div class="col-md-10 col-md-offset-1 col-xs-12">
 <%= form_with url: user_draft_path(current_user, @drafts), method: :patch, local: true do |d| %>
   <h3>編集する</h3><br>
   <%= d.label "実施官公庁名", class: "label-draft" %>
@@ -24,7 +24,7 @@
 
 </div>
 
-<div class="col-md-9 col-md-offset-3 col-xs-12">
+<div class="col-md-10 col-md-offset-1 col-xs-12">
   <%= d.label "カテゴリー", class: "label-draft" %><br>
   <%= d.check_box :emergency, {}, "true", "false" %>
   <span>緊急時（自然災害・感染症対策等）</span><br>

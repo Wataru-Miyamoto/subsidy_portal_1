@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :admin_post]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :admin_post]
   before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: [:index, :destroy]
+  before_action :admin_user, only: [:index, :destroy, :admin_post]
   before_action :admin_or_correct_user, only: [:show, :edit, :update]
   
   def index
@@ -49,6 +49,22 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = "#{@user.name}のデータを削除しました。"
     redirect_to users_url
+  end
+
+  def admin_post
+    @gov_topic = GovTopic.new
+    @prefs = Pref.all
+    @pref_topic = PrefTopic.new
+    @cities = Pref.all
+    @city_topic = CityTopic.new
+  end
+
+  def admin_pref_topic_post
+  end
+
+
+
+  def admin_city_topic_post
   end
 
   private

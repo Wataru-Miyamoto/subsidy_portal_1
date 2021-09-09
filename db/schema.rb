@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_053633) do
+ActiveRecord::Schema.define(version: 2021_09_05_083500) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_053633) do
     t.boolean "editor", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

@@ -1,5 +1,6 @@
 class PrefTopicsController < ApplicationController
   def new
+    @pref_topic = PrefTopic.new
   end
 
   def edit

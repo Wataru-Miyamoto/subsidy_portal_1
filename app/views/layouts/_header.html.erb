@@ -11,7 +11,7 @@
                 メニュー <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "マスタ投稿", "#" %></li>
+                <li><%= link_to "マスタ投稿", admin_post_user_path(current_user) %></li>
                 <li><%= link_to "投稿依頼一覧", user_drafts_path(current_user), method: :get %></li>
                 <li><%= link_to "投稿者一覧", users_path, method: :get %></li>
                 <li><%= link_to "管理者設定", edit_user_path(current_user) %></li>

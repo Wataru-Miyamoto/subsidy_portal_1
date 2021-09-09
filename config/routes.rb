@@ -8,15 +8,29 @@ Rails.application.routes.draw do
   delete  '/logout', to: 'sessions#destroy'
 
   resources :users do
+    member do
+      get 'admin_post'
+      post 'admin_pref_topic_post'
+      post 'admin_city_topic_post'
+    end
     resources :drafts
   end
 
   resources :gov_topics
 
   resources :prefs do
+    member do
+      get 'admin_index'
+    end
+    collection do
+      get 'cities_select' # /prefs/cities_select
+    end
     collection {post :import}
       resources :pref_topics
       resources :cities do
+        member do
+          get 'admin_index'
+        end
         collection {post :import}
         resources :city_topics
       end

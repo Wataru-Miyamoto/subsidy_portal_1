@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 col-xs-12 city_background">
+    <h1><%= @pref.pref_name %></h1>
+    <div class="col-md-10 col-md-offset-1">
+      <table class="table table-condensed table-hover" id="table-users">
+        <thead>
+          <tr>
+            <th><%= will_paginate %></th>
+          </tr>
+        </thead>
+        <% @cities.each do |city| %>
+          <tr>
+            <td>
+              <%= link_to new_pref_city_city_topic_path(@pref, city), method: :get do %>
+              <%= city.city_name %>
+            </td>
+          </tr>
+              <% end %>
+        <% end %>
+      </table>
+      <%= will_paginate %>
+    </div>
+  </div>
+</div>

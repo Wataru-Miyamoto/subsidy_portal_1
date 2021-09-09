@@ -20,9 +20,6 @@ class DraftsController < ApplicationController
       flash.now[:danger] = '投稿の送信ができませんでした。'
       render :new
     end
-  rescue ActiveRecord::RecordInvalid
-    flash[:danger] = "無効な入力データがあった為、更新処理をキャンセルしました。"
-    redirect_to drafts_url(current_user.id)
   end
 
   def edit
@@ -40,6 +37,6 @@ class DraftsController < ApplicationController
   private
 
     def draft_params
-      params.require(:draft).permit(:name, :title, :period, :content, :target, :counter, :link, :emergency, :primary_sector, :other_sector, :emigration, :senior, :parenting, :other, :select, :comment, :draft_approver_id, :draft_status)
+      params.require(:user).permit(drafts: [:name, :title, :period, :content, :target, :counter, :link, :emergency, :primary_sector, :other_sector, :emigration, :senior, :parenting, :other, :select, :comment, :draft_approver_id, :draft_status])[:drafts]
     end
 end
