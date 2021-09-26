@@ -7,15 +7,15 @@ class DraftsController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @draft = Draft.new
+    @draft = @user.drafts.new
   end
 
   def create
     @user = User.find(params[:user_id])
-    @draft = Draft.new(draft_params)
+    @draft = @user.drafts.new(draft_params)
     if @draft.save
       flash[:success] = '投稿を送信しました。'
-      redirect_to drafts_url(current_user.id)
+      redirect_to root_url
     else
       flash.now[:danger] = '投稿の送信ができませんでした。'
       render :new
@@ -37,6 +37,6 @@ class DraftsController < ApplicationController
   private
 
     def draft_params
-      params.require(:user).permit(drafts: [:name, :title, :period, :content, :target, :counter, :link, :emergency, :primary_sector, :other_sector, :emigration, :senior, :parenting, :other, :select, :comment, :draft_approver_id, :draft_status])[:drafts]
+      params.require(:draft).permit(:name, :title, :period, :content, :target, :counter, :link, :emergency, :primary_sector, :other_sector, :emigration, :senior, :parenting, :other, :select)
     end
 end
