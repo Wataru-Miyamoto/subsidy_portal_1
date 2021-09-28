@@ -21,6 +21,7 @@ gem 'roo'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'rails_admin', '~> 2.0.0.beta'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

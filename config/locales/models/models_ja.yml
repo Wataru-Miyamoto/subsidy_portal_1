@@ -1,8 +1,13 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
-      draft: 投稿
+      user: 1-ユーザー
+      draft: 2-投稿
+      gov_topic: 3-国施策
+      pref: 4-都道府県
+      pref_topic: 5-県施策
+      city: 6-市区町村
+      city_topic: 7-市施策
     attributes:
         user:
           id: ID
@@ -15,8 +20,66 @@ ja:
           created_at: 作成日
           updated_at: 更新日
         draft:
-          wrote_on: 日付
-          started_at: 出勤時間
-          finished_at: 退勤時間
-          note: 備考
-          user: ユーザーID
+          name: 実施官公庁名
+          title: 施作名
+          period: 実施期間
+          content: 実施内容
+          target: 対象者
+          counter: 受付窓口
+          link: リンク
+          emergency: 緊急時（自然災害・感染症対策等）
+          primary_sector: 農林漁業者向け
+          other_sector: その他事業者向け
+          emigration: 移住者向け
+          senior: 高齢者向け
+          parenting: 子育て世帯向け
+          other: それ以外
+          select: 国県市選択
+          comment: コメント
+          draft_approver: 承認者ID
+          draft_status: 承認コメント
+        gov_topic:
+          name: 実施官公庁名
+          title: 施作名
+          period: 実施期間
+          content: 実施内容
+          target: 対象者
+          counter: 受付窓口
+          link: リンク
+          emergency: 緊急時（自然災害・感染症対策等）
+          primary_sector: 農林漁業者向け
+          other_sector: その他事業者向け
+          emigration: 移住者向け
+          senior: 高齢者向け
+          parenting: 子育て世帯向け
+          other: それ以外
+        pref_topic:
+          name: 実施官公庁名
+          title: 施作名
+          period: 実施期間
+          content: 実施内容
+          target: 対象者
+          counter: 受付窓口
+          link: リンク
+          emergency: 緊急時（自然災害・感染症対策等）
+          primary_sector: 農林漁業者向け
+          other_sector: その他事業者向け
+          emigration: 移住者向け
+          senior: 高齢者向け
+          parenting: 子育て世帯向け
+          other: それ以外
+        city_topic:
+          name: 実施官公庁名
+          title: 施作名
+          period: 実施期間
+          content: 実施内容
+          target: 対象者
+          counter: 受付窓口
+          link: リンク
+          emergency: 緊急時（自然災害・感染症対策等）
+          primary_sector: 農林漁業者向け
+          other_sector: その他事業者向け
+          emigration: 移住者向け
+          senior: 高齢者向け
+          parenting: 子育て世帯向け
+          other: それ以外
