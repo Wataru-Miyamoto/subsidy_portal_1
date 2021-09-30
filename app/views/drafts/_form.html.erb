@@ -1,5 +1,5 @@
 <div class="col-md-10 col-md-offset-1 col-xs-12">
-<%= form_with url: user_draft_path(current_user, @drafts), method: :patch, local: true do |d| %>
+<%= form_with url: user_draft_path(current_user, draft), method: :patch, local: true do |d| %>
   <h3>編集する</h3><br>
   <%= d.label "実施官公庁名", class: "label-draft" %>
   <%= d.text_field :name, placeholder: "（例）◯◯省、◯◯庁、××県、××県△△市 など", class: 'form-control' %>

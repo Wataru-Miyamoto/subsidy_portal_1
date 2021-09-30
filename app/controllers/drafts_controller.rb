@@ -3,6 +3,7 @@ class DraftsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @drafts = current_user.admin? ? Draft.all : Draft.where(user_id: @user.id)
+    #@draft = Draft.find(params[:id])
   end
 
   def new
@@ -26,7 +27,16 @@ class DraftsController < ApplicationController
   end
 
   def update
-
+    @user = User.find(params[:user_id])
+    @draft = @user.drafts.find(params[:id])
+    if @draft.update_attributes!(draft_params)
+      @draft.update(draft_status: "更新申請中です")
+      flash[:info] = "投稿を更新して送信しました。"
+      redirect_to root_url
+    else  
+      flash[:danger] = "投稿の更新に失敗しました。"
+      redirect_to root_url
+    end
   end
 
   def destroy
