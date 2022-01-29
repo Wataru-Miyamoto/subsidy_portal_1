@@ -3,7 +3,6 @@ class DraftsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @drafts = current_user.admin? ? Draft.all : Draft.where(user_id: @user.id)
-    #@draft = Draft.find(params[:id])
   end
 
   def new
